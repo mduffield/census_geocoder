@@ -1,0 +1,19 @@
+<%= form_tag lookup_geocode_lookups_path do %>
+  <fieldset class="form-group">
+    <label for="streetAddress">Street Address</label>
+    <input type="text" name="street" class="form-control" id="streetAddress" placeholder="e.g. 123 Main Street" required>
+  </fieldset>
+  <fieldset class="form-group">
+    <label for="city">City</label>
+    <input type="text" name="city" class="form-control" id="city" placeholder="e.g. Salt Lake City" required>
+  </fieldset>
+  <fieldset class="form-group">
+    <label for="state">State</label>
+    <input type="text" name="state" class="form-control" id="state" placeholder="e.g. UT" required>
+  </fieldset>
+  <fieldset class="form-group">
+    <label for="zip">Zip</label>
+    <input type="text" name="zip" class="form-control" id="zip" placeholder="e.g. 84101" required>
+  </fieldset>
+  <button type="submit" class="btn btn-primary">Submit</button>
+<% end %>

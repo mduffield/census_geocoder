@@ -1,0 +1,15 @@
+<p>Latitude: <%= @latitude %></p>
+<p>Longitude: <%= @longitude %></p>
+<div id="map"></div>
+<%= render 'form' %>
+<script>
+  function initMap() {
+    var mapDiv = document.getElementById('map');
+    var map = new google.maps.Map(mapDiv, {
+      center: {lat: <%= @latitude %>, lng: <%= @longitude %>},
+      zoom: 8
+    });
+  }
+</script>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCFnJY7LvsAQIaGrWW3n8DVACX9VXyYmYk&callback=initMap"
+    async defer></script>

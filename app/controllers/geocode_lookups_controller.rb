@@ -2,12 +2,13 @@ class GeocodeLookupsController < ApplicationController
 
   before_filter :set_api
   
-  def new_lookup
+  def index
   end
 
   def lookup
     @address = Address.new(params)
-    @api.geocode_address(@address)
+    resp = @api.geocode_address(@address)
+    @latitude, @longitude = @api.parse_lat_long(resp)
   end
 
   private

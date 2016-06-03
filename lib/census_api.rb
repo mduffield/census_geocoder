@@ -17,7 +17,15 @@ class CensusApi
       benchmark: @benchmark
     }
     puts @base_url
-    RestClient.get(@base_url, params: query)
+    resp = RestClient.get(@base_url, params: query)
+    return false if resp.code != 200
+    resp
+  end
+
+  def parse_lat_long(resp)
+    parsed = JSON.parse(resp)
+    coords = parsed["result"]["addressMatches"].first["coordinates"]
+    [coords["x"], coords["y"]]
   end
 
 end
