@@ -10,9 +10,7 @@ class CensusApi
   def geocode_address_and_parse_lat_long(address)
     response = geocode_address(address)
     return false unless response
-    lat_long = parse_lat_long(response)
-    return false unless  lat_long
-    lat_long
+    parse_lat_long(response)
   end
 
   def geocode_address(address)
@@ -31,7 +29,7 @@ class CensusApi
 
   def parse_lat_long(response)
     parsed = JSON.parse(response)
-    return false unless parsed["result"]["addressMatches"].any?
+    return {lat: false, long: false} unless parsed["result"]["addressMatches"].any?
     coords = parsed["result"]["addressMatches"].first["coordinates"]
     {lat: coords["y"], long: coords["x"]}
   end

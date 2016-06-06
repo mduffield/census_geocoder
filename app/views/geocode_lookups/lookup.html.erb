@@ -1,6 +1,10 @@
-<p>Latitude: <%= @latitude %></p>
-<p>Longitude: <%= @longitude %></p>
-<div id="map"></div>
+<% if @error %>
+  <div class="error"><%= @error %></div>
+<% else %>
+  <p>Latitude: <%= @latitude %></p>
+  <p>Longitude: <%= @longitude %></p>
+  <div id="map"></div>
+<% end %>
 <%= render 'form' %>
 <script>
   function initMap() {
@@ -9,6 +13,11 @@
       center: {lat: <%= @latitude %>, lng: <%= @longitude %>},
       zoom: 8
     });
+    var marker = new google.maps.Marker({
+      position: {lat: <%= @latitude %>, lng: <%= @longitude %>},
+      map: map,
+      title: 'Location'
+  });
   }
 </script>
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCFnJY7LvsAQIaGrWW3n8DVACX9VXyYmYk&callback=initMap"
