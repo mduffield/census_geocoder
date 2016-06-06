@@ -3,6 +3,7 @@ class GeocodeLookupsController < ApplicationController
   before_filter :set_api
   
   def index
+    @address = Address.new
   end
 
   def lookup
